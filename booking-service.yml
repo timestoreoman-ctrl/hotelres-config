@@ -2,9 +2,6 @@ server:
   port: 9002
 
 spring:
-  application:
-    name: booking-service
-
   datasource:
     url: jdbc:mysql://mysql-booking:3306/bookingdb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
     username: root
