@@ -1,0 +1,35 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: api-gateway
+
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+
+      routes:
+        - id: room-service
+          uri: lb://room-service
+          predicates:
+            - Path=/rooms/**
+
+        - id: booking-service
+          uri: lb://booking-service
+          predicates:
+            - Path=/bookings/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://discovery-server:9011/eureka
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
