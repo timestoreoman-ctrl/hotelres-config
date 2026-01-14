@@ -31,3 +31,42 @@ management:
     health:
       show-details: always
 
+
+
+      # =======================
+# BOOKING SERVICE
+# =======================
+---
+server:
+  port: 9002
+
+spring:
+  application:
+    name: booking-service
+
+  datasource:
+    url: jdbc:mysql://mysql-booking:3306/bookingdb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    username: root
+    password: root
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://discovery-server:9011/eureka
+    register-with-eureka: true
+    fetch-registry: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
+
